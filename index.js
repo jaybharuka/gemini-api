@@ -40,7 +40,10 @@ app.post("/getDiseaseDetails", async (req, res) => {
     res.status(200).json(jsonData);
   } catch (error) {
     console.error("Gemini API error:", error.response?.data || error.message);
-    res.status(500).json({ error: "Failed to fetch data from Gemini API" });
+    res.status(500).json({
+      error: "Failed to fetch data from Gemini API",
+      details: error.response?.data || error.message
+    });
   }
 });
 
